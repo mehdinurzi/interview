@@ -21,11 +21,6 @@ class AuthRepositoryImpl extends AuthRepository {
         prefs.setString("session", response.data["data"]["session"]);
       }
 
-      if (map["params"]["otp"] == "111111") {
-        OtpEntity otpEntity = OtpModel.fromJson(response.data);
-        return DataSuccess(otpEntity);
-      }
-
       if (map["params"]["otp"] == ""||map["params"]["otp"].length<6) {
         return const DataFailed("لطفا مقدار کد را کامل وارد کنید");
       }
