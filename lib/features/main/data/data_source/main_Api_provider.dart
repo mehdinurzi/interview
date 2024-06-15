@@ -6,13 +6,13 @@ class MainApiProvider{
   Future<dynamic> homeData(Map map) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final String? token = prefs.getString("session");
+    print(token);
     try {
       var response = await _dio.post('https://interview.esavis.ir/api',
           options: Options(
             headers: {
               'Content-Type': 'application/json',
-              "Authorization":"Bearer $token",
-              'omax-apikey': "cc751c6d-42cd-468f-84a3-59f85dc6b944"
+              'omax-apikey': token
             },
           ),
           data: map);
